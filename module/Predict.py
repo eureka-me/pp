@@ -63,34 +63,39 @@ class Predict:
         if output_submit_file:
             self.output_submit_file(y_pred, uids, cids, format_submit_file=True)
 
-    def output_model(self, param_search=False, sample=-1, skip_cv=False, n_jobs=-1):
+    def output_model(self, param_search=False, sample=-1, skip_cv=False, n_jobs=-1,
+                     output_model=True):
         """モデルファイルを出力する"""
 
         if param_search:
-            param_grid = [{'penalty': ['l1'],
-                           'C': [0.5],
-                           'class_weight': [None],
-                           'standardise': [True],
-                           'separate_genre': [True],
-                           'dummy_drop_first': [False],
-                           'min_coef_value': [0.001],
-                           'solver': ['saga']}]  # TODO:sagaにするとn_jobs=-1にできる
+            # param_grid = [{'penalty': ['l1'],
+            #                'C': [0.5],
+            #                'class_weight': [None],
+            #                'standardise': [True],
+            #                'separate_genre': [True],
+            #                'dummy_drop_first': [False],
+            #                'min_coef_value': [0.001],
+            #                'solver': ['saga']}]  # TODO:sagaにするとn_jobs=-1にできる
 
-            # param_grid = [{'max_depth': [3],
-            #                'learning_rate': [0.1],
-            #                'n_estimators': [100],
-            #                'gamma': [0],
-            #                'separate_genre': [False, True]}]
+            param_grid = [{'max_depth': [5],
+                           'learning_rate': [0.1],
+                           'n_estimators': [100],
+                           'gamma': [0],
+                           'separate_genre': [True],
+                           'scale_pos_weight': [1]}]
 
             params = self.param_search(param_grid=param_grid, sample=sample, output_evaluation_file=True,
                                        skip_cv=skip_cv, n_jobs=n_jobs)
 
         else:
-            params = {'penalty': 'l1', 'C': 1, 'class_weight': None, 'standardise': True,
-                            'separate_genre': True, 'min_coef_value': 0.001}
+            # params = {'penalty': 'l1', 'C': 1, 'class_weight': None, 'standardise': True,
+            #           'separate_genre': True, 'min_coef_value': 0.001}
+            params = {'max_depth': 5, 'learning_rate': 0.1, 'n_estimators': 100, 'gamma': 0, 'separate_genre': True,
+                      'scale_pos_weight': 1}
+
             self.logger.debug(params)
 
-        return self.learn_model(params=params, sample=sample)
+        return self.learn_model(params=params, sample=sample) if output_model else None
 
     def param_search(self, param_grid, sample=-1, output_evaluation_file=False, skip_cv=False, n_jobs=-1):
         """学習モデルを作成し、評価結果(MAP@10)を返す"""
@@ -102,7 +107,7 @@ class Predict:
         # データ読み込み
         X_train, X_test, y_train, y_test, uids_train, uids_test, cids_train, cids_test = \
             self.get_data(merge_file_dir=self.config['GENERAL']['MERGE_FILE_DIR_TRAIN'],
-                           sample=sample, train_ratio=0.9)
+                          sample=sample, train_ratio=0.9)
 
         # モデル学習
         self.logger.debug('sample: {0}\nparam_grid:{1}'.format(sample, param_grid))

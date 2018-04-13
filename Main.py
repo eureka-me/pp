@@ -38,7 +38,7 @@ Predict = pred.Predict(config)
 
 def output_model():
     # 予測モデルを作成し、予測結果を出力する
-    Predict.output_model(param_search=True, sample=500, skip_cv=False)
+    Predict.output_model(param_search=True, sample=500, skip_cv=False, output_model=False)
 
 
 def predict_output():
