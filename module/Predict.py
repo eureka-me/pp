@@ -293,7 +293,7 @@ class Predict:
     def output_submit_file(self, y_pred, uids, cids, format_submit_file=True):
         """提出用ファイルを出力する"""
 
-        dic = self.format_submit_file(y_pred, uids, cids)
+        dic = self.format_submit_file(y_pred, uids, cids, pred_thr=0)
         # dic = defaultdict(list)
         # for _uid, _cid, _y in zip(uid, cid, y_pred):
         #     if _y == 1:

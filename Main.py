@@ -44,7 +44,7 @@ def output_model():
 def predict_output():
 
     # TODO: ビューティーが含まれない件
-    model_file_path = './model/2018-04-07/2018-04-07-10-59-58'
+    model_file_path = './model/2018-04-13/2018-04-13-00-06-56'
     Predict.predict(model_file_path=model_file_path, sample=-1, output_submit_file=True,
                     separation=1000)
 
@@ -62,13 +62,13 @@ def predict_evaluate_output():
 def output_coef_file():
 
     import pickle
-    model = pickle.load(open('./model/2018-04-12/2018-04-12-01-01-40', 'rb'))
+    model = pickle.load(open('./model/2018-04-13/2018-04-13-00-06-56', 'rb'))
     Predict.output_coef_file(model=model)
 
 
 if __name__ == '__main__':
     # output_model()
-    # predict_output()
-    predict_evaluate_output()
-    # output_coef_file()
+    predict_output()
+    # predict_evaluate_output()
+    # output_coef_file()b
 
