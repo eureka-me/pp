@@ -21,8 +21,8 @@ __date__ = "2018/03/26"
 
 
 class DummyFeatureSelectionXgboost(BaseEstimator):
-    def __init__(self, separate_genre=True, max_depth=3, learning_rate=0.1, n_estimators=100, min_child_weight=1, gamma=0, standardise=False,
-                 dummy_drop_first=False, n_jobs=-1):
+    def __init__(self, separate_genre=True, max_depth=3, learning_rate=0.1, n_estimators=100, min_child_weight=1,
+                 gamma=0, standardise=False, scale_pos_weight=0.1, dummy_drop_first=False, n_jobs=-1):
 
         self.separate_genre = separate_genre
         self.dummy_drop_first = dummy_drop_first
@@ -34,6 +34,7 @@ class DummyFeatureSelectionXgboost(BaseEstimator):
         self.n_estimators = n_estimators
         self.min_child_weight = min_child_weight
         self.gamma = gamma
+        self.scale_pos_weight = scale_pos_weight
 
         self.scaler = {}
         self.predictor = {}
@@ -78,7 +79,8 @@ class DummyFeatureSelectionXgboost(BaseEstimator):
 
                 model = XGBClassifier(max_depth=self.max_depth, learning_rate=self.learning_rate,
                                       n_estimators=self.n_estimators, min_child_weight=self.min_child_weight,
-                                      gamma=self.gamma, n_jobs=self.n_jobs, silent=False)
+                                      gamma=self.gamma, n_jobs=self.n_jobs, silent=False,
+                                      scale_pos_weight=self.scale_pos_weight)
 
                 logger.debug('START: model.fit *for feature selection')
                 model.fit(X_dummy, y)
@@ -182,7 +184,7 @@ class DummyFeatureSelectionXgboost(BaseEstimator):
             # インデックスを除く
             ix = _X['ix']
 
-            if genre in self.colnames and genre in self.scaler:
+            if genre in self.colnames:
                 logger.debug('START: {}'.format(genre))
 
                 # ダミー化
@@ -197,8 +199,8 @@ class DummyFeatureSelectionXgboost(BaseEstimator):
                         X_dummy.loc[:, c] = [0 for _ in range(len(X_dummy))]
 
                 # 標準化と不要なカラムの除去
-                logger.debug('START: standardise')
                 if self.standardise:
+                    logger.debug('START: standardise')
                     X_dummy = self.scaler[genre].transform(X_dummy[self.colnames[genre]])
                 else:
                     X_dummy = X_dummy[self.colnames[genre]]
