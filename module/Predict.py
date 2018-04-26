@@ -13,6 +13,7 @@ from collections import defaultdict
 from logging import getLogger, StreamHandler, DEBUG, FileHandler, Formatter
 from module import DummyFeatureSelectionLogisticRegression
 from module import DummyFeatureSelectionXgboost
+from math import ceil
 
 # ponpare.Predict
 # Date: 2018/03/26
@@ -149,11 +150,11 @@ class Predict:
             self.logger.debug(params)
 
             if self.model_type == 'lr':
-                model = DummyFeatureSelectionLogisticRegression.DummyFeatureSelectionLogisticRegression(**params).\
+                model = DummyFeatureSelectionLogisticRegression.DummyFeatureSelectionLogisticRegression(**params). \
                     fit(X_train, y_train)
 
             elif self.model_type == 'xb':
-                model = DummyFeatureSelectionXgboost.DummyFeatureSelectionXgboost(**params).\
+                model = DummyFeatureSelectionXgboost.DummyFeatureSelectionXgboost(**params). \
                     fit(X_train, y_train)
             else:
                 raise ValueError
@@ -259,8 +260,12 @@ class Predict:
             X = self.add_same_genre_purchase_visit(X)
 
         if self.config['PREDICT']['ADD_PLACE_INTERACTION'] == 'TRUE':
-            self.logger.debug('START: add_place_interatction')
+            self.logger.debug('START: add_place_interaction')
             X = self.add_place_interaction(X)
+
+        if self.config['PREDICT']['ADD_PLACE_INTERACTION_RATIO'] == 'TRUE':
+            self.logger.debug('START: add_place_interaction_ratio')
+            X = self.add_place_interaction_ratio(X, y)
 
         if train_ratio < 1:
             X_train, X_test, y_train, y_test, uids_train, uids_test, cids_train, cids_test \
@@ -305,8 +310,8 @@ class Predict:
         writer.writerow(['USER_ID_hash', 'PURCHASED_COUPONS'])
 
         uid_list = [s.replace(',\n', '') for s in
-                            open(self.config['GENERAL']['SAMPLE_SUBMISSION_FILE_PATH']).readlines()][1:] \
-                            if format_submit_file else set(uids)
+                    open(self.config['GENERAL']['SAMPLE_SUBMISSION_FILE_PATH']).readlines()][1:] \
+            if format_submit_file else set(uids)
 
         for _uid in uid_list:
             writer.writerow([_uid, ' '.join(dic[_uid])])
@@ -437,9 +442,98 @@ class Predict:
 
         return X
 
+    @staticmethod
+    def add_place_interaction_ratio(X, y, k=5, denominator="each_section"):
+        """
+        ジャンルごとのユーザー×クーポンの購入比率を算出し、カラムを追加する
+        そのジャンルにおけるユーザー地域×クーポン地域での購入数/そのジャンルのレコード数
+        """
 
+        X.loc[:, 'y'] = y
+        X.loc[:, 'PREF_NAME_large_area_name_ratio'] = [.0 for _ in range(len(X))]
+        X.loc[:, 'PREF_NAME_small_area_name_ratio'] = [.0 for _ in range(len(X))]
+        X.loc[:, 'PREF_NAME_ken_name_ratio'] = [.0 for _ in range(len(X))]
+        ix = {c: i for i, c in enumerate(X.keys())}
 
+        # 1. ジャンルで分割
+        gp = X.groupby(['GENRE_NAME'])
 
+        # 2. ジャンルでの分割ごとに実行
+        for gp_name, _X in gp:
+            print('START: {}'.format(gp_name))
 
+            # インデックスをランダムにk分割
+            ixs = list(_X.index)
+            random.shuffle(ixs)
 
+            index_dic = defaultdict(list)
+            while True:
+                try:
+                    for i in range(k):
+                        index_dic[i].append(ixs.pop())
+                except IndexError:
+                    break
+
+            for i in range(k):
+                _X_reference = _X[~_X.index.isin(index_dic[i])]
+
+                PREF_NAME_large_area_name_dic, PREF_NAME_small_area_name_dic, PREF_NAME_ken_name_dic = \
+                    defaultdict(int), defaultdict(int), defaultdict(int)
+
+                PREF_NAME_large_area_name_dic_din, PREF_NAME_small_area_name_dic_din, PREF_NAME_ken_name_dic_din = \
+                    defaultdict(int), defaultdict(int), defaultdict(int)
+
+                for _ix, row in zip(_X_reference.index, _X_reference.values):
+
+                    PREF_NAME = row[ix['PREF_NAME']]
+                    large_area_name = row[ix['large_area_name']]
+                    small_area_name = row[ix['small_area_name']]
+                    ken_name = row[ix['ken_name']]
+
+                    PREF_NAME_large_area_name_dic_din[(PREF_NAME, large_area_name)] += 1
+                    PREF_NAME_small_area_name_dic_din[(PREF_NAME, small_area_name)] += 1
+                    PREF_NAME_ken_name_dic_din[(PREF_NAME, ken_name)] += 1
+
+                    if row[ix['y']] == 1:
+
+                        PREF_NAME_large_area_name_dic[(PREF_NAME, large_area_name)] += 1
+                        PREF_NAME_small_area_name_dic[(PREF_NAME, small_area_name)] += 1
+                        PREF_NAME_ken_name_dic[(PREF_NAME, ken_name)] += 1
+
+                for _ix in index_dic[i]:
+
+                    PREF_NAME = X.iat[_ix, ix['PREF_NAME']]
+                    large_area_name = X.iat[_ix, ix['large_area_name']]
+                    small_area_name = X.iat[_ix, ix['small_area_name']]
+                    ken_name = X.iat[_ix, ix['ken_name']]
+
+                    if denominator == 'all':
+                        X.iat[_ix, ix['PREF_NAME_large_area_name_ratio']] \
+                            = PREF_NAME_large_area_name_dic[(PREF_NAME, large_area_name)] / len(_X_reference)
+
+                        X.iat[_ix, ix['PREF_NAME_small_area_name_ratio']] \
+                            = PREF_NAME_small_area_name_dic[(PREF_NAME, small_area_name)] / len(_X_reference)
+
+                        X.iat[_ix, ix['PREF_NAME_ken_name_ratio']] \
+                            = PREF_NAME_ken_name_dic[(PREF_NAME, ken_name)] / len(_X_reference)
+
+                    elif denominator == 'each_section':
+                        X.iat[_ix, ix['PREF_NAME_large_area_name_ratio']] \
+                            = PREF_NAME_large_area_name_dic[(PREF_NAME, large_area_name)] / \
+                              PREF_NAME_large_area_name_dic_din[(PREF_NAME, large_area_name)] \
+                              if PREF_NAME_large_area_name_dic_din[(PREF_NAME, large_area_name)] > 0 else 0
+
+                        X.iat[_ix, ix['PREF_NAME_small_area_name_ratio']] \
+                            = PREF_NAME_small_area_name_dic[(PREF_NAME, small_area_name)] / \
+                              PREF_NAME_small_area_name_dic_din[(PREF_NAME, small_area_name)] \
+                              if PREF_NAME_small_area_name_dic_din[(PREF_NAME, small_area_name)] > 0 else 0
+
+                        X.iat[_ix, ix['PREF_NAME_ken_name_ratio']] \
+                            = PREF_NAME_ken_name_dic[(PREF_NAME, ken_name)] / \
+                              PREF_NAME_ken_name_dic_din[(PREF_NAME, ken_name)] \
+                              if PREF_NAME_ken_name_dic_din[(PREF_NAME, ken_name)] > 0 else 0
+
+        X = X.drop('y', axis=1)
+
+        return X
 

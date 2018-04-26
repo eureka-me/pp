@@ -67,8 +67,8 @@ def output_coef_file():
 
 
 if __name__ == '__main__':
-    # output_model()
-    predict_output()
+    output_model()
+    # predict_output()
     # predict_evaluate_output()
     # output_coef_file()b
 

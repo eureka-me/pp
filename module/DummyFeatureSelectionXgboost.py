@@ -3,12 +3,14 @@
 
 from sklearn.base import BaseEstimator
 from xgboost import XGBClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 from collections import defaultdict
 import copy
 import pandas as pd
 from logging import getLogger
 from tqdm import tqdm
+import numpy as np
 
 logger = getLogger('')
 
@@ -22,12 +24,13 @@ __date__ = "2018/03/26"
 
 class DummyFeatureSelectionXgboost(BaseEstimator):
     def __init__(self, separate_genre=True, max_depth=3, learning_rate=0.1, n_estimators=100, min_child_weight=1,
-                 gamma=0, standardise=False, scale_pos_weight=0.1, dummy_drop_first=False, n_jobs=-1):
+                 gamma=0, standardise=False, scale_pos_weight=0.1, dummy_drop_first=False, n_jobs=-1, proba_tune=True):
 
         self.separate_genre = separate_genre
         self.dummy_drop_first = dummy_drop_first
         self.standardise = standardise
         self.n_jobs = n_jobs
+        self.proba_tune = proba_tune
 
         self.max_depth = max_depth
         self.learning_rate = learning_rate
@@ -41,6 +44,7 @@ class DummyFeatureSelectionXgboost(BaseEstimator):
         self.predictor_proba = {}
         self.colnames = defaultdict(list)
         self.importance = {}
+        self.proba_tuner = {}
 
         self.min_record_thr = 10
 
@@ -103,6 +107,20 @@ class DummyFeatureSelectionXgboost(BaseEstimator):
                 self.predictor[genre] = model.predict
                 self.predictor_proba[genre] = model.predict_proba
                 self.importance[genre] = model.feature_importances_
+
+                # ロジスティック回帰による確率の調整
+                if self.proba_tune:
+                    y_proba_pred = model.predict_proba(X_dummy[self.colnames[genre]])[:, 1].reshape(-1, 1)
+                    proba_tune_model = LogisticRegression(C=1000)
+                    proba_tune_model.fit(y_proba_pred, y)
+
+                    # あとで削除
+                    # import numpy as np
+                    # y_proba_pred_tune = proba_tune_model.predict_proba(y_proba_pred)[:, 1]
+                    # print('{0}  mean(y):{1}, mean(y_pred):{2}, mean(y_pred_tune):{3}'
+                    #       .format(genre, np.mean(y), np.mean(y_proba_pred), np.mean(y_proba_pred_tune)))
+
+                    self.proba_tuner[genre] = proba_tune_model.predict_proba
 
         except:
             import traceback
@@ -206,7 +224,11 @@ class DummyFeatureSelectionXgboost(BaseEstimator):
                     X_dummy = X_dummy[self.colnames[genre]]
 
                 logger.debug('START: predict_proba')
-                y = [p[1] for p in self.predictor_proba[genre](X_dummy)]  # TODO: predict_probaは各クラスの確率を返す！
+                # y = [p[1] for p in self.predictor_proba[genre](X_dummy)]
+                y = self.predictor_proba[genre](X_dummy)[:, 1]  # TODO: predict_probaは各クラスの確率を返す！
+
+                if self.proba_tune:
+                    y = self.proba_tuner[genre](y.reshape(-1, 1))[:, 1]
 
             else:  # 学習時に存在しないジャンルならば、全て0を返す
                 y = [0 for _ in range(len(_X))]
