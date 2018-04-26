@@ -38,20 +38,20 @@ Predict = pred.Predict(config)
 
 def output_model():
     # 予測モデルを作成し、予測結果を出力する
-    Predict.output_model(param_search=True, sample=500, skip_cv=False, output_model=False)
+    Predict.output_model(param_search=False, sample=-1, skip_cv=True, output_model=True)
 
 
 def predict_output():
 
     # TODO: ビューティーが含まれない件
-    model_file_path = './model/2018-04-13/2018-04-13-00-06-56'
+    model_file_path = './model/2018-04-26/2018-04-26-09-14-24_no_calib'
     Predict.predict(model_file_path=model_file_path, sample=-1, output_submit_file=True,
                     separation=1000)
 
 
 def predict_evaluate_output():
     # 予測モデルを作成し、提出用ファイルを出力する
-    model_file_path = Predict.output_model(param_search=False, sample=10000, skip_cv=True,
+    model_file_path = Predict.output_model(param_search=False, sample=-1, skip_cv=True,
                                            n_jobs=-1)
 
     # model_file_path = './model/2018-04-04/2018-04-04-00-18-48'
