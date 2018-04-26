@@ -78,7 +78,7 @@ class Predict:
             #                'solver': ['saga']}]  # TODO:sagaにするとn_jobs=-1にできる
 
             param_grid = [{'max_depth': [5],
-                           'learning_rate': [0.1],
+                           'learning_rate': [0.1, 0.2, 0.3],
                            'n_estimators': [100],
                            'gamma': [0],
                            'separate_genre': [True],

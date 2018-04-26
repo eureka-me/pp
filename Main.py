@@ -51,7 +51,7 @@ def predict_output():
 
 def predict_evaluate_output():
     # 予測モデルを作成し、提出用ファイルを出力する
-    model_file_path = Predict.output_model(param_search=False, sample=10000, skip_cv=True,
+    model_file_path = Predict.output_model(param_search=False, sample=-1, skip_cv=True,
                                            n_jobs=-1)
 
     # model_file_path = './model/2018-04-04/2018-04-04-00-18-48'
@@ -67,8 +67,8 @@ def output_coef_file():
 
 
 if __name__ == '__main__':
-    # output_model()
-    predict_output()
+    output_model()
+    # predict_output()
     # predict_evaluate_output()
     # output_coef_file()b
 
