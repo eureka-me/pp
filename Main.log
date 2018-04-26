@@ -56289,3 +56289,654 @@ a
 2018-04-26 08:44:46,733 - DEBUG - START: get_dummies
 2018-04-26 08:44:46,766 - DEBUG - START: add_lacking_cols
 2018-04-26 08:44:46,774 - DEBUG - START: predict_proba
+2018-04-26 09:12:48,792 - DEBUG - {'max_depth': 5, 'learning_rate': 0.1, 'n_estimators': 100, 'gamma': 0, 'separate_genre': True, 'scale_pos_weight': 1, 'proba_tune': False}
+2018-04-26 09:12:48,792 - DEBUG - reading data...
+2018-04-26 09:12:50,511 - DEBUG - START: fillna
+2018-04-26 09:12:50,526 - DEBUG - START: add_place_interaction_ratio
+2018-04-26 09:12:50,933 - DEBUG - START: fit
+2018-04-26 09:12:50,948 - DEBUG - START: その他のクーポン
+2018-04-26 09:12:50,948 - DEBUG - START: get_dummies
+2018-04-26 09:12:50,995 - DEBUG - END: get_dummies
+2018-04-26 09:12:50,995 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:12:51,058 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:12:52,152 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:12:52,199 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:12:52,199 - DEBUG - START: エステ
+2018-04-26 09:12:52,199 - DEBUG - START: get_dummies
+2018-04-26 09:12:52,261 - DEBUG - END: get_dummies
+2018-04-26 09:12:52,261 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:12:52,339 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:12:52,902 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:12:52,949 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:12:52,949 - DEBUG - START: ギフトカード
+2018-04-26 09:12:52,949 - DEBUG - START: get_dummies
+2018-04-26 09:12:52,980 - DEBUG - END: get_dummies
+2018-04-26 09:12:52,980 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:12:53,042 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:12:53,339 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:12:53,386 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:12:53,386 - DEBUG - START: グルメ
+2018-04-26 09:12:53,386 - DEBUG - START: get_dummies
+2018-04-26 09:12:53,480 - DEBUG - END: get_dummies
+2018-04-26 09:12:53,480 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:12:53,714 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:12:55,230 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:12:55,293 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:12:55,308 - DEBUG - START: ネイル・アイ
+2018-04-26 09:12:55,308 - DEBUG - START: get_dummies
+2018-04-26 09:12:55,371 - DEBUG - END: get_dummies
+2018-04-26 09:12:55,371 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:12:55,418 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:12:55,808 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:12:55,855 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:12:55,855 - DEBUG - START: ヘアサロン
+2018-04-26 09:12:55,855 - DEBUG - START: get_dummies
+2018-04-26 09:12:55,918 - DEBUG - END: get_dummies
+2018-04-26 09:12:55,918 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:12:55,996 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:12:56,590 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:12:56,636 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:12:56,636 - DEBUG - START: ホテル・旅館
+2018-04-26 09:12:56,636 - DEBUG - START: get_dummies
+2018-04-26 09:12:56,746 - DEBUG - END: get_dummies
+2018-04-26 09:12:56,746 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:12:57,012 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:12:58,902 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:12:58,965 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:12:58,980 - DEBUG - START: リラクゼーション
+2018-04-26 09:12:58,980 - DEBUG - START: get_dummies
+2018-04-26 09:12:59,043 - DEBUG - END: get_dummies
+2018-04-26 09:12:59,043 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:12:59,121 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:12:59,527 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:12:59,590 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:12:59,590 - DEBUG - START: レジャー
+2018-04-26 09:12:59,590 - DEBUG - START: get_dummies
+2018-04-26 09:12:59,668 - DEBUG - END: get_dummies
+2018-04-26 09:12:59,668 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:12:59,731 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:13:00,277 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:13:00,340 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:13:00,340 - DEBUG - START: レッスン
+2018-04-26 09:13:00,340 - DEBUG - START: get_dummies
+2018-04-26 09:13:00,403 - DEBUG - END: get_dummies
+2018-04-26 09:13:00,403 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:13:00,449 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:13:00,887 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:13:00,934 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:13:00,934 - DEBUG - START: 健康・医療
+2018-04-26 09:13:00,934 - DEBUG - START: get_dummies
+2018-04-26 09:13:00,965 - DEBUG - END: get_dummies
+2018-04-26 09:13:00,965 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:13:01,028 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:13:01,121 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:13:01,168 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:13:01,168 - DEBUG - START: 宅配
+2018-04-26 09:13:01,168 - DEBUG - START: get_dummies
+2018-04-26 09:13:01,293 - DEBUG - END: get_dummies
+2018-04-26 09:13:01,293 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:13:01,621 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:13:03,559 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:13:03,668 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:14:24,547 - DEBUG - {'max_depth': 5, 'learning_rate': 0.1, 'n_estimators': 100, 'gamma': 0, 'separate_genre': True, 'scale_pos_weight': 1, 'proba_tune': False}
+2018-04-26 09:14:24,547 - DEBUG - reading data...
+2018-04-26 09:17:21,174 - DEBUG - START: fillna
+2018-04-26 09:17:22,018 - DEBUG - START: add_place_interaction_ratio
+2018-04-26 09:18:26,235 - DEBUG - START: fit
+2018-04-26 09:18:28,439 - DEBUG - START: その他のクーポン
+2018-04-26 09:18:28,485 - DEBUG - START: get_dummies
+2018-04-26 09:18:29,439 - DEBUG - END: get_dummies
+2018-04-26 09:18:29,439 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:18:40,830 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:18:44,177 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:18:46,880 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:18:46,896 - DEBUG - START: エステ
+2018-04-26 09:18:46,958 - DEBUG - START: get_dummies
+2018-04-26 09:18:48,068 - DEBUG - END: get_dummies
+2018-04-26 09:18:48,068 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:19:01,241 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:19:04,492 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:19:08,008 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:19:08,039 - DEBUG - START: ギフトカード
+2018-04-26 09:19:08,039 - DEBUG - START: get_dummies
+2018-04-26 09:19:08,258 - DEBUG - END: get_dummies
+2018-04-26 09:19:08,258 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:19:09,711 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:19:11,820 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:19:12,258 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:19:12,274 - DEBUG - START: グルメ
+2018-04-26 09:19:12,508 - DEBUG - START: get_dummies
+2018-04-26 09:19:17,337 - DEBUG - END: get_dummies
+2018-04-26 09:19:17,337 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:20:15,312 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:20:18,984 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:20:32,501 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:20:32,517 - DEBUG - START: ネイル・アイ
+2018-04-26 09:20:32,579 - DEBUG - START: get_dummies
+2018-04-26 09:20:33,689 - DEBUG - END: get_dummies
+2018-04-26 09:20:33,689 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:20:45,830 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:20:48,737 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:20:51,800 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:20:51,815 - DEBUG - START: ビューティー
+2018-04-26 09:20:51,815 - DEBUG - START: get_dummies
+2018-04-26 09:20:51,847 - DEBUG - END: get_dummies
+2018-04-26 09:20:51,847 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:20:51,909 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:20:52,394 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:20:52,456 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:20:52,456 - DEBUG - START: ヘアサロン
+2018-04-26 09:20:52,534 - DEBUG - START: get_dummies
+2018-04-26 09:20:54,160 - DEBUG - END: get_dummies
+2018-04-26 09:20:54,160 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:21:13,333 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:21:16,611 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:21:21,033 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:21:21,049 - DEBUG - START: ホテル・旅館
+2018-04-26 09:21:21,267 - DEBUG - START: get_dummies
+2018-04-26 09:21:25,627 - DEBUG - END: get_dummies
+2018-04-26 09:21:25,627 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:22:31,494 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:22:36,001 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:22:47,971 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:22:47,987 - DEBUG - START: リラクゼーション
+2018-04-26 09:22:48,081 - DEBUG - START: get_dummies
+2018-04-26 09:22:49,722 - DEBUG - END: get_dummies
+2018-04-26 09:22:49,722 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:23:08,724 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:23:12,130 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:23:17,365 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:23:17,381 - DEBUG - START: レジャー
+2018-04-26 09:23:17,428 - DEBUG - START: get_dummies
+2018-04-26 09:23:18,365 - DEBUG - END: get_dummies
+2018-04-26 09:23:18,365 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:23:30,413 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:23:34,226 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:23:37,352 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:23:37,367 - DEBUG - START: レッスン
+2018-04-26 09:23:37,414 - DEBUG - START: get_dummies
+2018-04-26 09:23:38,399 - DEBUG - END: get_dummies
+2018-04-26 09:23:38,399 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:23:48,525 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:23:51,325 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:23:54,154 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:23:54,169 - DEBUG - START: 健康・医療
+2018-04-26 09:23:54,185 - DEBUG - START: get_dummies
+2018-04-26 09:23:54,404 - DEBUG - END: get_dummies
+2018-04-26 09:23:54,404 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:23:56,123 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:23:58,013 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:23:58,545 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:23:58,560 - DEBUG - START: 宅配
+2018-04-26 09:23:58,857 - DEBUG - START: get_dummies
+2018-04-26 09:24:05,202 - DEBUG - END: get_dummies
+2018-04-26 09:24:05,202 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:25:28,007 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:25:31,930 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:25:49,034 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:30:16,425 - DEBUG - reading data...
+2018-04-26 09:31:04,102 - DEBUG - START: fillna
+2018-04-26 09:31:04,368 - DEBUG - START: add_place_interaction_ratio
+2018-04-26 09:31:23,026 - DEBUG - START: predict_proba
+2018-04-26 09:31:23,760 - DEBUG - START: group.by
+2018-04-26 09:31:24,120 - DEBUG - START: その他のクーポン
+2018-04-26 09:31:24,120 - DEBUG - START: get_dummies
+2018-04-26 09:31:24,136 - DEBUG - START: add_lacking_cols
+2018-04-26 09:31:24,198 - DEBUG - START: predict_proba
+2018-04-26 09:31:24,214 - DEBUG - START: エステ
+2018-04-26 09:31:24,214 - DEBUG - START: get_dummies
+2018-04-26 09:31:24,245 - DEBUG - START: add_lacking_cols
+2018-04-26 09:31:24,276 - DEBUG - START: predict_proba
+2018-04-26 09:31:24,292 - DEBUG - START: ギフトカード
+2018-04-26 09:31:24,292 - DEBUG - START: get_dummies
+2018-04-26 09:31:24,307 - DEBUG - START: add_lacking_cols
+2018-04-26 09:31:24,307 - DEBUG - START: predict_proba
+2018-04-26 09:31:24,307 - DEBUG - START: グルメ
+2018-04-26 09:31:24,307 - DEBUG - START: get_dummies
+2018-04-26 09:31:24,448 - DEBUG - START: add_lacking_cols
+2018-04-26 09:31:24,542 - DEBUG - START: predict_proba
+2018-04-26 09:31:24,636 - DEBUG - START: ネイル・アイ
+2018-04-26 09:31:24,636 - DEBUG - START: get_dummies
+2018-04-26 09:31:24,682 - DEBUG - START: add_lacking_cols
+2018-04-26 09:31:24,714 - DEBUG - START: predict_proba
+2018-04-26 09:31:24,745 - DEBUG - START: ヘアサロン
+2018-04-26 09:31:24,745 - DEBUG - START: get_dummies
+2018-04-26 09:31:24,808 - DEBUG - START: add_lacking_cols
+2018-04-26 09:31:24,854 - DEBUG - START: predict_proba
+2018-04-26 09:31:24,901 - DEBUG - START: ホテル・旅館
+2018-04-26 09:31:24,901 - DEBUG - START: get_dummies
+2018-04-26 09:31:25,057 - DEBUG - START: add_lacking_cols
+2018-04-26 09:31:25,073 - DEBUG - START: predict_proba
+2018-04-26 09:31:25,183 - DEBUG - START: リラクゼーション
+2018-04-26 09:31:25,183 - DEBUG - START: get_dummies
+2018-04-26 09:31:25,245 - DEBUG - START: add_lacking_cols
+2018-04-26 09:31:25,245 - DEBUG - START: predict_proba
+2018-04-26 09:31:25,292 - DEBUG - START: レジャー
+2018-04-26 09:31:25,292 - DEBUG - START: get_dummies
+2018-04-26 09:31:25,323 - DEBUG - START: add_lacking_cols
+2018-04-26 09:31:25,495 - DEBUG - START: predict_proba
+2018-04-26 09:31:25,526 - DEBUG - START: レッスン
+2018-04-26 09:31:25,526 - DEBUG - START: get_dummies
+2018-04-26 09:31:25,573 - DEBUG - START: add_lacking_cols
+2018-04-26 09:31:25,604 - DEBUG - START: predict_proba
+2018-04-26 09:31:25,636 - DEBUG - START: 健康・医療
+2018-04-26 09:31:25,636 - DEBUG - START: get_dummies
+2018-04-26 09:31:25,651 - DEBUG - START: add_lacking_cols
+2018-04-26 09:31:25,667 - DEBUG - START: predict_proba
+2018-04-26 09:31:25,683 - DEBUG - START: 宅配
+2018-04-26 09:31:25,683 - DEBUG - START: get_dummies
+2018-04-26 09:31:25,886 - DEBUG - START: add_lacking_cols
+2018-04-26 09:31:26,276 - DEBUG - START: predict_proba
+2018-04-26 09:31:26,558 - DEBUG - reading data...
+2018-04-26 09:32:14,250 - DEBUG - START: fillna
+2018-04-26 09:32:14,485 - DEBUG - START: add_place_interaction_ratio
+2018-04-26 09:32:33,487 - DEBUG - START: predict_proba
+2018-04-26 09:32:34,221 - DEBUG - START: group.by
+2018-04-26 09:32:34,581 - DEBUG - START: その他のクーポン
+2018-04-26 09:32:34,581 - DEBUG - START: get_dummies
+2018-04-26 09:32:34,596 - DEBUG - START: add_lacking_cols
+2018-04-26 09:32:34,659 - DEBUG - START: predict_proba
+2018-04-26 09:32:34,674 - DEBUG - START: エステ
+2018-04-26 09:32:34,674 - DEBUG - START: get_dummies
+2018-04-26 09:32:34,706 - DEBUG - START: add_lacking_cols
+2018-04-26 09:32:34,721 - DEBUG - START: predict_proba
+2018-04-26 09:32:34,752 - DEBUG - START: ギフトカード
+2018-04-26 09:32:34,752 - DEBUG - START: get_dummies
+2018-04-26 09:32:34,752 - DEBUG - START: add_lacking_cols
+2018-04-26 09:32:34,752 - DEBUG - START: predict_proba
+2018-04-26 09:32:34,768 - DEBUG - START: グルメ
+2018-04-26 09:32:34,768 - DEBUG - START: get_dummies
+2018-04-26 09:32:34,909 - DEBUG - START: add_lacking_cols
+2018-04-26 09:32:35,002 - DEBUG - START: predict_proba
+2018-04-26 09:32:35,096 - DEBUG - START: ネイル・アイ
+2018-04-26 09:32:35,096 - DEBUG - START: get_dummies
+2018-04-26 09:32:35,159 - DEBUG - START: add_lacking_cols
+2018-04-26 09:32:35,190 - DEBUG - START: predict_proba
+2018-04-26 09:32:35,221 - DEBUG - START: ヘアサロン
+2018-04-26 09:32:35,221 - DEBUG - START: get_dummies
+2018-04-26 09:32:35,284 - DEBUG - START: add_lacking_cols
+2018-04-26 09:32:35,315 - DEBUG - START: predict_proba
+2018-04-26 09:32:35,377 - DEBUG - START: ホテル・旅館
+2018-04-26 09:32:35,377 - DEBUG - START: get_dummies
+2018-04-26 09:32:35,518 - DEBUG - START: add_lacking_cols
+2018-04-26 09:32:35,534 - DEBUG - START: predict_proba
+2018-04-26 09:32:35,659 - DEBUG - START: リラクゼーション
+2018-04-26 09:32:35,659 - DEBUG - START: get_dummies
+2018-04-26 09:32:35,721 - DEBUG - START: add_lacking_cols
+2018-04-26 09:32:35,721 - DEBUG - START: predict_proba
+2018-04-26 09:32:35,768 - DEBUG - START: レジャー
+2018-04-26 09:32:35,768 - DEBUG - START: get_dummies
+2018-04-26 09:32:35,799 - DEBUG - START: add_lacking_cols
+2018-04-26 09:32:35,971 - DEBUG - START: predict_proba
+2018-04-26 09:32:35,987 - DEBUG - START: レッスン
+2018-04-26 09:32:35,987 - DEBUG - START: get_dummies
+2018-04-26 09:32:36,034 - DEBUG - START: add_lacking_cols
+2018-04-26 09:32:36,081 - DEBUG - START: predict_proba
+2018-04-26 09:32:36,096 - DEBUG - START: 健康・医療
+2018-04-26 09:32:36,096 - DEBUG - START: get_dummies
+2018-04-26 09:32:36,112 - DEBUG - START: add_lacking_cols
+2018-04-26 09:32:36,128 - DEBUG - START: predict_proba
+2018-04-26 09:32:36,143 - DEBUG - START: 宅配
+2018-04-26 09:32:36,143 - DEBUG - START: get_dummies
+2018-04-26 09:32:36,346 - DEBUG - START: add_lacking_cols
+2018-04-26 09:32:36,737 - DEBUG - START: predict_proba
+2018-04-26 09:32:37,018 - DEBUG - reading data...
+2018-04-26 09:33:25,237 - DEBUG - START: fillna
+2018-04-26 09:33:25,502 - DEBUG - START: add_place_interaction_ratio
+2018-04-26 09:33:44,036 - DEBUG - START: predict_proba
+2018-04-26 09:33:44,786 - DEBUG - START: group.by
+2018-04-26 09:33:45,176 - DEBUG - START: その他のクーポン
+2018-04-26 09:33:45,176 - DEBUG - START: get_dummies
+2018-04-26 09:33:45,208 - DEBUG - START: add_lacking_cols
+2018-04-26 09:33:45,255 - DEBUG - START: predict_proba
+2018-04-26 09:33:45,270 - DEBUG - START: エステ
+2018-04-26 09:33:45,270 - DEBUG - START: get_dummies
+2018-04-26 09:33:45,301 - DEBUG - START: add_lacking_cols
+2018-04-26 09:33:45,317 - DEBUG - START: predict_proba
+2018-04-26 09:33:45,348 - DEBUG - START: ギフトカード
+2018-04-26 09:33:45,348 - DEBUG - START: get_dummies
+2018-04-26 09:33:45,364 - DEBUG - START: add_lacking_cols
+2018-04-26 09:33:45,364 - DEBUG - START: predict_proba
+2018-04-26 09:33:45,364 - DEBUG - START: グルメ
+2018-04-26 09:33:45,364 - DEBUG - START: get_dummies
+2018-04-26 09:33:45,505 - DEBUG - START: add_lacking_cols
+2018-04-26 09:33:45,598 - DEBUG - START: predict_proba
+2018-04-26 09:33:45,692 - DEBUG - START: ネイル・アイ
+2018-04-26 09:33:45,692 - DEBUG - START: get_dummies
+2018-04-26 09:33:45,739 - DEBUG - START: add_lacking_cols
+2018-04-26 09:33:45,770 - DEBUG - START: predict_proba
+2018-04-26 09:33:45,802 - DEBUG - START: ヘアサロン
+2018-04-26 09:33:45,802 - DEBUG - START: get_dummies
+2018-04-26 09:33:45,880 - DEBUG - START: add_lacking_cols
+2018-04-26 09:33:45,911 - DEBUG - START: predict_proba
+2018-04-26 09:33:45,958 - DEBUG - START: ホテル・旅館
+2018-04-26 09:33:45,958 - DEBUG - START: get_dummies
+2018-04-26 09:33:46,114 - DEBUG - START: add_lacking_cols
+2018-04-26 09:33:46,130 - DEBUG - START: predict_proba
+2018-04-26 09:33:46,239 - DEBUG - START: リラクゼーション
+2018-04-26 09:33:46,239 - DEBUG - START: get_dummies
+2018-04-26 09:33:46,302 - DEBUG - START: add_lacking_cols
+2018-04-26 09:33:46,302 - DEBUG - START: predict_proba
+2018-04-26 09:33:46,348 - DEBUG - START: レジャー
+2018-04-26 09:33:46,348 - DEBUG - START: get_dummies
+2018-04-26 09:33:46,395 - DEBUG - START: add_lacking_cols
+2018-04-26 09:33:46,567 - DEBUG - START: predict_proba
+2018-04-26 09:33:46,583 - DEBUG - START: レッスン
+2018-04-26 09:33:46,583 - DEBUG - START: get_dummies
+2018-04-26 09:33:46,630 - DEBUG - START: add_lacking_cols
+2018-04-26 09:33:46,677 - DEBUG - START: predict_proba
+2018-04-26 09:33:46,708 - DEBUG - START: 健康・医療
+2018-04-26 09:33:46,708 - DEBUG - START: get_dummies
+2018-04-26 09:33:46,723 - DEBUG - START: add_lacking_cols
+2018-04-26 09:33:46,739 - DEBUG - START: predict_proba
+2018-04-26 09:33:46,739 - DEBUG - START: 宅配
+2018-04-26 09:33:46,739 - DEBUG - START: get_dummies
+2018-04-26 09:33:46,942 - DEBUG - START: add_lacking_cols
+2018-04-26 09:33:47,333 - DEBUG - START: predict_proba
+2018-04-26 09:33:47,614 - DEBUG - reading data...
+2018-04-26 09:34:36,157 - DEBUG - START: fillna
+2018-04-26 09:34:36,438 - DEBUG - START: add_place_interaction_ratio
+2018-04-26 09:34:55,893 - DEBUG - START: predict_proba
+2018-04-26 09:34:56,659 - DEBUG - START: group.by
+2018-04-26 09:34:57,081 - DEBUG - START: その他のクーポン
+2018-04-26 09:34:57,081 - DEBUG - START: get_dummies
+2018-04-26 09:34:57,112 - DEBUG - START: add_lacking_cols
+2018-04-26 09:34:57,159 - DEBUG - START: predict_proba
+2018-04-26 09:34:57,190 - DEBUG - START: エステ
+2018-04-26 09:34:57,190 - DEBUG - START: get_dummies
+2018-04-26 09:34:57,222 - DEBUG - START: add_lacking_cols
+2018-04-26 09:34:57,253 - DEBUG - START: predict_proba
+2018-04-26 09:34:57,269 - DEBUG - START: ギフトカード
+2018-04-26 09:34:57,269 - DEBUG - START: get_dummies
+2018-04-26 09:34:57,284 - DEBUG - START: add_lacking_cols
+2018-04-26 09:34:57,284 - DEBUG - START: predict_proba
+2018-04-26 09:34:57,300 - DEBUG - START: グルメ
+2018-04-26 09:34:57,300 - DEBUG - START: get_dummies
+2018-04-26 09:34:57,425 - DEBUG - START: add_lacking_cols
+2018-04-26 09:34:57,519 - DEBUG - START: predict_proba
+2018-04-26 09:34:57,644 - DEBUG - START: ネイル・アイ
+2018-04-26 09:34:57,644 - DEBUG - START: get_dummies
+2018-04-26 09:34:57,690 - DEBUG - START: add_lacking_cols
+2018-04-26 09:34:57,722 - DEBUG - START: predict_proba
+2018-04-26 09:34:57,769 - DEBUG - START: ヘアサロン
+2018-04-26 09:34:57,769 - DEBUG - START: get_dummies
+2018-04-26 09:34:57,831 - DEBUG - START: add_lacking_cols
+2018-04-26 09:34:57,878 - DEBUG - START: predict_proba
+2018-04-26 09:34:57,940 - DEBUG - START: ホテル・旅館
+2018-04-26 09:34:57,940 - DEBUG - START: get_dummies
+2018-04-26 09:34:58,081 - DEBUG - START: add_lacking_cols
+2018-04-26 09:34:58,097 - DEBUG - START: predict_proba
+2018-04-26 09:34:58,222 - DEBUG - START: リラクゼーション
+2018-04-26 09:34:58,222 - DEBUG - START: get_dummies
+2018-04-26 09:34:58,284 - DEBUG - START: add_lacking_cols
+2018-04-26 09:34:58,300 - DEBUG - START: predict_proba
+2018-04-26 09:34:58,347 - DEBUG - START: レジャー
+2018-04-26 09:34:58,347 - DEBUG - START: get_dummies
+2018-04-26 09:34:58,378 - DEBUG - START: add_lacking_cols
+2018-04-26 09:34:58,550 - DEBUG - START: predict_proba
+2018-04-26 09:34:58,581 - DEBUG - START: レッスン
+2018-04-26 09:34:58,581 - DEBUG - START: get_dummies
+2018-04-26 09:34:58,612 - DEBUG - START: add_lacking_cols
+2018-04-26 09:34:58,659 - DEBUG - START: predict_proba
+2018-04-26 09:34:58,691 - DEBUG - START: 健康・医療
+2018-04-26 09:34:58,691 - DEBUG - START: get_dummies
+2018-04-26 09:34:58,706 - DEBUG - START: add_lacking_cols
+2018-04-26 09:34:58,722 - DEBUG - START: predict_proba
+2018-04-26 09:34:58,737 - DEBUG - START: 宅配
+2018-04-26 09:34:58,737 - DEBUG - START: get_dummies
+2018-04-26 09:34:58,941 - DEBUG - START: add_lacking_cols
+2018-04-26 09:34:59,316 - DEBUG - START: predict_proba
+2018-04-26 09:34:59,628 - DEBUG - reading data...
+2018-04-26 09:35:49,026 - DEBUG - START: fillna
+2018-04-26 09:35:49,308 - DEBUG - START: add_place_interaction_ratio
+2018-04-26 09:36:08,185 - DEBUG - START: predict_proba
+2018-04-26 09:36:08,919 - DEBUG - START: group.by
+2018-04-26 09:36:09,294 - DEBUG - START: その他のクーポン
+2018-04-26 09:36:09,294 - DEBUG - START: get_dummies
+2018-04-26 09:36:09,325 - DEBUG - START: add_lacking_cols
+2018-04-26 09:36:09,372 - DEBUG - START: predict_proba
+2018-04-26 09:36:09,388 - DEBUG - START: エステ
+2018-04-26 09:36:09,388 - DEBUG - START: get_dummies
+2018-04-26 09:36:09,419 - DEBUG - START: add_lacking_cols
+2018-04-26 09:36:09,450 - DEBUG - START: predict_proba
+2018-04-26 09:36:09,466 - DEBUG - START: ギフトカード
+2018-04-26 09:36:09,466 - DEBUG - START: get_dummies
+2018-04-26 09:36:09,482 - DEBUG - START: add_lacking_cols
+2018-04-26 09:36:09,482 - DEBUG - START: predict_proba
+2018-04-26 09:36:09,482 - DEBUG - START: グルメ
+2018-04-26 09:36:09,482 - DEBUG - START: get_dummies
+2018-04-26 09:36:09,622 - DEBUG - START: add_lacking_cols
+2018-04-26 09:36:09,700 - DEBUG - START: predict_proba
+2018-04-26 09:36:10,185 - DEBUG - START: ネイル・アイ
+2018-04-26 09:36:10,185 - DEBUG - START: get_dummies
+2018-04-26 09:36:10,247 - DEBUG - START: add_lacking_cols
+2018-04-26 09:36:10,279 - DEBUG - START: predict_proba
+2018-04-26 09:36:10,294 - DEBUG - START: ヘアサロン
+2018-04-26 09:36:10,294 - DEBUG - START: get_dummies
+2018-04-26 09:36:10,372 - DEBUG - START: add_lacking_cols
+2018-04-26 09:36:10,419 - DEBUG - START: predict_proba
+2018-04-26 09:36:10,466 - DEBUG - START: ホテル・旅館
+2018-04-26 09:36:10,466 - DEBUG - START: get_dummies
+2018-04-26 09:36:10,607 - DEBUG - START: add_lacking_cols
+2018-04-26 09:36:10,622 - DEBUG - START: predict_proba
+2018-04-26 09:36:10,747 - DEBUG - START: リラクゼーション
+2018-04-26 09:36:10,747 - DEBUG - START: get_dummies
+2018-04-26 09:36:10,794 - DEBUG - START: add_lacking_cols
+2018-04-26 09:36:10,810 - DEBUG - START: predict_proba
+2018-04-26 09:36:10,841 - DEBUG - START: レジャー
+2018-04-26 09:36:10,841 - DEBUG - START: get_dummies
+2018-04-26 09:36:10,872 - DEBUG - START: add_lacking_cols
+2018-04-26 09:36:11,044 - DEBUG - START: predict_proba
+2018-04-26 09:36:11,076 - DEBUG - START: レッスン
+2018-04-26 09:36:11,076 - DEBUG - START: get_dummies
+2018-04-26 09:36:11,107 - DEBUG - START: add_lacking_cols
+2018-04-26 09:36:11,154 - DEBUG - START: predict_proba
+2018-04-26 09:36:11,185 - DEBUG - START: 健康・医療
+2018-04-26 09:36:11,185 - DEBUG - START: get_dummies
+2018-04-26 09:36:11,201 - DEBUG - START: add_lacking_cols
+2018-04-26 09:36:11,216 - DEBUG - START: predict_proba
+2018-04-26 09:36:11,216 - DEBUG - START: 宅配
+2018-04-26 09:36:11,216 - DEBUG - START: get_dummies
+2018-04-26 09:36:11,419 - DEBUG - START: add_lacking_cols
+2018-04-26 09:36:11,810 - DEBUG - START: predict_proba
+2018-04-26 09:36:12,107 - DEBUG - reading data...
+2018-04-26 09:37:00,581 - DEBUG - START: fillna
+2018-04-26 09:37:00,862 - DEBUG - START: add_place_interaction_ratio
+2018-04-26 09:37:19,848 - DEBUG - START: predict_proba
+2018-04-26 09:37:20,614 - DEBUG - START: group.by
+2018-04-26 09:37:20,989 - DEBUG - START: その他のクーポン
+2018-04-26 09:37:20,989 - DEBUG - START: get_dummies
+2018-04-26 09:37:21,005 - DEBUG - START: add_lacking_cols
+2018-04-26 09:37:21,067 - DEBUG - START: predict_proba
+2018-04-26 09:37:21,083 - DEBUG - START: エステ
+2018-04-26 09:37:21,083 - DEBUG - START: get_dummies
+2018-04-26 09:37:21,099 - DEBUG - START: add_lacking_cols
+2018-04-26 09:37:21,130 - DEBUG - START: predict_proba
+2018-04-26 09:37:21,145 - DEBUG - START: ギフトカード
+2018-04-26 09:37:21,145 - DEBUG - START: get_dummies
+2018-04-26 09:37:21,161 - DEBUG - START: add_lacking_cols
+2018-04-26 09:37:21,161 - DEBUG - START: predict_proba
+2018-04-26 09:37:21,161 - DEBUG - START: グルメ
+2018-04-26 09:37:21,161 - DEBUG - START: get_dummies
+2018-04-26 09:37:21,302 - DEBUG - START: add_lacking_cols
+2018-04-26 09:37:21,395 - DEBUG - START: predict_proba
+2018-04-26 09:37:21,505 - DEBUG - START: ネイル・アイ
+2018-04-26 09:37:21,505 - DEBUG - START: get_dummies
+2018-04-26 09:37:21,552 - DEBUG - START: add_lacking_cols
+2018-04-26 09:37:21,583 - DEBUG - START: predict_proba
+2018-04-26 09:37:21,614 - DEBUG - START: ヘアサロン
+2018-04-26 09:37:21,614 - DEBUG - START: get_dummies
+2018-04-26 09:37:21,692 - DEBUG - START: add_lacking_cols
+2018-04-26 09:37:21,739 - DEBUG - START: predict_proba
+2018-04-26 09:37:21,771 - DEBUG - START: ホテル・旅館
+2018-04-26 09:37:21,771 - DEBUG - START: get_dummies
+2018-04-26 09:37:21,927 - DEBUG - START: add_lacking_cols
+2018-04-26 09:37:21,942 - DEBUG - START: predict_proba
+2018-04-26 09:37:22,052 - DEBUG - START: リラクゼーション
+2018-04-26 09:37:22,052 - DEBUG - START: get_dummies
+2018-04-26 09:37:22,099 - DEBUG - START: add_lacking_cols
+2018-04-26 09:37:22,114 - DEBUG - START: predict_proba
+2018-04-26 09:37:22,161 - DEBUG - START: レジャー
+2018-04-26 09:37:22,161 - DEBUG - START: get_dummies
+2018-04-26 09:37:22,192 - DEBUG - START: add_lacking_cols
+2018-04-26 09:37:22,380 - DEBUG - START: predict_proba
+2018-04-26 09:37:22,396 - DEBUG - START: レッスン
+2018-04-26 09:37:22,396 - DEBUG - START: get_dummies
+2018-04-26 09:37:22,442 - DEBUG - START: add_lacking_cols
+2018-04-26 09:37:22,474 - DEBUG - START: predict_proba
+2018-04-26 09:37:22,521 - DEBUG - START: 健康・医療
+2018-04-26 09:37:22,521 - DEBUG - START: get_dummies
+2018-04-26 09:37:22,536 - DEBUG - START: add_lacking_cols
+2018-04-26 09:37:22,552 - DEBUG - START: predict_proba
+2018-04-26 09:37:22,567 - DEBUG - START: 宅配
+2018-04-26 09:37:22,567 - DEBUG - START: get_dummies
+2018-04-26 09:37:22,771 - DEBUG - START: add_lacking_cols
+2018-04-26 09:37:23,161 - DEBUG - START: predict_proba
+2018-04-26 09:37:23,458 - DEBUG - reading data...
+2018-04-26 09:38:12,068 - DEBUG - START: fillna
+2018-04-26 09:38:12,318 - DEBUG - START: add_place_interaction_ratio
+2018-04-26 09:38:31,195 - DEBUG - START: predict_proba
+2018-04-26 09:38:31,930 - DEBUG - START: group.by
+2018-04-26 09:38:32,305 - DEBUG - START: その他のクーポン
+2018-04-26 09:38:32,305 - DEBUG - START: get_dummies
+2018-04-26 09:38:32,336 - DEBUG - START: add_lacking_cols
+2018-04-26 09:38:32,383 - DEBUG - START: predict_proba
+2018-04-26 09:38:32,399 - DEBUG - START: エステ
+2018-04-26 09:38:32,399 - DEBUG - START: get_dummies
+2018-04-26 09:38:32,430 - DEBUG - START: add_lacking_cols
+2018-04-26 09:38:32,461 - DEBUG - START: predict_proba
+2018-04-26 09:38:32,477 - DEBUG - START: ギフトカード
+2018-04-26 09:38:32,477 - DEBUG - START: get_dummies
+2018-04-26 09:38:32,492 - DEBUG - START: add_lacking_cols
+2018-04-26 09:38:32,492 - DEBUG - START: predict_proba
+2018-04-26 09:38:32,492 - DEBUG - START: グルメ
+2018-04-26 09:38:32,492 - DEBUG - START: get_dummies
+2018-04-26 09:38:32,633 - DEBUG - START: add_lacking_cols
+2018-04-26 09:38:32,711 - DEBUG - START: predict_proba
+2018-04-26 09:38:32,821 - DEBUG - START: ネイル・アイ
+2018-04-26 09:38:32,821 - DEBUG - START: get_dummies
+2018-04-26 09:38:32,868 - DEBUG - START: add_lacking_cols
+2018-04-26 09:38:32,899 - DEBUG - START: predict_proba
+2018-04-26 09:38:32,930 - DEBUG - START: ヘアサロン
+2018-04-26 09:38:32,930 - DEBUG - START: get_dummies
+2018-04-26 09:38:33,008 - DEBUG - START: add_lacking_cols
+2018-04-26 09:38:33,039 - DEBUG - START: predict_proba
+2018-04-26 09:38:33,086 - DEBUG - START: ホテル・旅館
+2018-04-26 09:38:33,086 - DEBUG - START: get_dummies
+2018-04-26 09:38:33,243 - DEBUG - START: add_lacking_cols
+2018-04-26 09:38:33,274 - DEBUG - START: predict_proba
+2018-04-26 09:38:33,368 - DEBUG - START: リラクゼーション
+2018-04-26 09:38:33,383 - DEBUG - START: get_dummies
+2018-04-26 09:38:33,430 - DEBUG - START: add_lacking_cols
+2018-04-26 09:38:33,446 - DEBUG - START: predict_proba
+2018-04-26 09:38:33,477 - DEBUG - START: レジャー
+2018-04-26 09:38:33,477 - DEBUG - START: get_dummies
+2018-04-26 09:38:33,508 - DEBUG - START: add_lacking_cols
+2018-04-26 09:38:33,680 - DEBUG - START: predict_proba
+2018-04-26 09:38:33,711 - DEBUG - START: レッスン
+2018-04-26 09:38:33,711 - DEBUG - START: get_dummies
+2018-04-26 09:38:33,743 - DEBUG - START: add_lacking_cols
+2018-04-26 09:38:33,789 - DEBUG - START: predict_proba
+2018-04-26 09:38:33,805 - DEBUG - START: 健康・医療
+2018-04-26 09:38:33,805 - DEBUG - START: get_dummies
+2018-04-26 09:38:33,836 - DEBUG - START: add_lacking_cols
+2018-04-26 09:38:33,852 - DEBUG - START: predict_proba
+2018-04-26 09:38:33,852 - DEBUG - START: 宅配
+2018-04-26 09:38:33,852 - DEBUG - START: get_dummies
+2018-04-26 09:38:34,071 - DEBUG - START: add_lacking_cols
+2018-04-26 09:39:35,757 - DEBUG - {'max_depth': 5, 'learning_rate': 0.1, 'n_estimators': 100, 'gamma': 0, 'separate_genre': True, 'scale_pos_weight': 1, 'proba_tune': True}
+2018-04-26 09:39:35,757 - DEBUG - reading data...
+2018-04-26 09:42:23,841 - DEBUG - START: fillna
+2018-04-26 09:42:24,638 - DEBUG - START: add_place_interaction_ratio
+2018-04-26 09:43:27,860 - DEBUG - START: fit
+2018-04-26 09:43:30,047 - DEBUG - START: その他のクーポン
+2018-04-26 09:43:30,094 - DEBUG - START: get_dummies
+2018-04-26 09:43:31,048 - DEBUG - END: get_dummies
+2018-04-26 09:43:31,048 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:43:42,564 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:43:45,909 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:43:48,674 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:43:49,550 - DEBUG - START: エステ
+2018-04-26 09:43:49,612 - DEBUG - START: get_dummies
+2018-04-26 09:43:50,706 - DEBUG - END: get_dummies
+2018-04-26 09:43:50,706 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:44:03,754 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:44:06,942 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:44:10,271 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:44:10,442 - DEBUG - START: ギフトカード
+2018-04-26 09:44:10,442 - DEBUG - START: get_dummies
+2018-04-26 09:44:10,661 - DEBUG - END: get_dummies
+2018-04-26 09:44:10,661 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:44:12,130 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:44:14,318 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:44:14,787 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:44:14,818 - DEBUG - START: グルメ
+2018-04-26 09:44:15,068 - DEBUG - START: get_dummies
+2018-04-26 09:44:19,834 - DEBUG - END: get_dummies
+2018-04-26 09:44:19,834 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:45:19,474 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:45:23,208 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:45:35,850 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:45:36,429 - DEBUG - START: ネイル・アイ
+2018-04-26 09:45:36,475 - DEBUG - START: get_dummies
+2018-04-26 09:45:37,585 - DEBUG - END: get_dummies
+2018-04-26 09:45:37,585 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:45:49,934 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:45:52,966 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:45:55,919 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:45:56,060 - DEBUG - START: ビューティー
+2018-04-26 09:45:56,060 - DEBUG - START: get_dummies
+2018-04-26 09:45:56,091 - DEBUG - END: get_dummies
+2018-04-26 09:45:56,091 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:45:56,138 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:45:56,607 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:45:56,669 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:45:56,669 - DEBUG - START: ヘアサロン
+2018-04-26 09:45:56,763 - DEBUG - START: get_dummies
+2018-04-26 09:45:58,373 - DEBUG - END: get_dummies
+2018-04-26 09:45:58,373 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:46:17,687 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:46:20,922 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:46:25,485 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:46:25,672 - DEBUG - START: ホテル・旅館
+2018-04-26 09:46:25,891 - DEBUG - START: get_dummies
+2018-04-26 09:46:30,220 - DEBUG - END: get_dummies
+2018-04-26 09:46:30,220 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:47:34,884 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:47:39,369 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:47:51,417 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:47:51,933 - DEBUG - START: リラクゼーション
+2018-04-26 09:47:52,027 - DEBUG - START: get_dummies
+2018-04-26 09:47:53,636 - DEBUG - END: get_dummies
+2018-04-26 09:47:53,636 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:48:12,654 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:48:15,951 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:48:21,217 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:48:21,420 - DEBUG - START: レジャー
+2018-04-26 09:48:21,483 - DEBUG - START: get_dummies
+2018-04-26 09:48:22,405 - DEBUG - END: get_dummies
+2018-04-26 09:48:22,405 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:48:34,547 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:48:38,313 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:48:41,360 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:48:41,485 - DEBUG - START: レッスン
+2018-04-26 09:48:41,547 - DEBUG - START: get_dummies
+2018-04-26 09:48:42,954 - DEBUG - END: get_dummies
+2018-04-26 09:48:42,954 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:48:53,549 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:48:56,299 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:48:58,846 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:48:58,956 - DEBUG - START: 健康・医療
+2018-04-26 09:48:58,971 - DEBUG - START: get_dummies
+2018-04-26 09:48:59,190 - DEBUG - END: get_dummies
+2018-04-26 09:48:59,190 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:49:00,909 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:49:02,706 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:49:03,175 - DEBUG - END: model.fit *after feature selection
+2018-04-26 09:49:03,206 - DEBUG - START: 宅配
+2018-04-26 09:49:03,503 - DEBUG - START: get_dummies
+2018-04-26 09:49:09,722 - DEBUG - END: get_dummies
+2018-04-26 09:49:09,722 - DEBUG - START: model.fit *for feature selection
+2018-04-26 09:50:35,350 - DEBUG - END: model.fit *for feature selection
+2018-04-26 09:50:39,288 - DEBUG - START: model.fit *after feature selection
+2018-04-26 09:50:58,545 - DEBUG - END: model.fit *after feature selection

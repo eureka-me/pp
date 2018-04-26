@@ -92,7 +92,7 @@ class Predict:
             # params = {'penalty': 'l1', 'C': 1, 'class_weight': None, 'standardise': True,
             #           'separate_genre': True, 'min_coef_value': 0.001}
             params = {'max_depth': 5, 'learning_rate': 0.1, 'n_estimators': 100, 'gamma': 0, 'separate_genre': True,
-                      'scale_pos_weight': 1}
+                      'scale_pos_weight': 1, 'proba_tune': True}
 
             self.logger.debug(params)
 
