@@ -30,6 +30,7 @@ class Predict:
         self.logger = getLogger(__name__)
         self.trial_time = dt.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
         self.model_type = config['PREDICT']['MODEL_TYPE']
+        self.first = True
 
     def predict(self, model_file_path, sample=-1, output_submit_file=False, separation=-1,
                 debug=False):
@@ -460,8 +461,9 @@ class Predict:
         ix = {c: i for i, c in enumerate(X.keys())}
 
         if test:
-            X_ref, y, uids, cids = self.read_data(self.config['GENERAL']['MERGE_FILE_DIR_TRAIN'], sample=10,
+            X_ref, y, uids, cids = self.read_data(self.config['GENERAL']['MERGE_FILE_DIR_TRAIN'], sample=-1,
                               initial_var=['GENRE_NAME', 'PREF_NAME', 'large_area_name', 'small_area_name', 'ken_name'])
+            k = 1
         else:
             X_ref = copy.deepcopy(X)
 
@@ -475,20 +477,30 @@ class Predict:
         for gp_name, _X in gp:
             print('START: {}'.format(gp_name))
 
-            # インデックスをランダムにk分割
-            ixs = list(_X.index)
-            random.shuffle(ixs)
-
             index_dic = defaultdict(list)
-            while True:
-                try:
-                    for i in range(k):
-                        index_dic[i].append(ixs.pop())
-                except IndexError:
-                    break
+            if not test:
+                # インデックスをランダムにk分割
+                ixs = list(_X.index)
+                random.shuffle(ixs)
+                while True:
+                    try:
+                        for i in range(k):
+                            index_dic[i].append(ixs.pop())
+                    except IndexError:
+                        break
+            else:
+                _gp = X.groupby(['GENRE_NAME'])
+                for genre, X_gp in _gp:
+                    index_dic[genre] = X_gp.index
+                del _gp
 
             for i in range(k):
-                _X_reference = _X[~_X.index.isin(index_dic[i])]
+                if test:
+                    _X_reference = X_ref
+                    ix_target = index_dic[gp_name]
+                else:
+                    _X_reference = _X[~_X.index.isin(index_dic[i])]
+                    ix_target = index_dic[i]
 
                 PREF_NAME_large_area_name_dic, PREF_NAME_small_area_name_dic, PREF_NAME_ken_name_dic = \
                     defaultdict(int), defaultdict(int), defaultdict(int)
@@ -513,7 +525,7 @@ class Predict:
                         PREF_NAME_small_area_name_dic[(PREF_NAME, small_area_name)] += 1
                         PREF_NAME_ken_name_dic[(PREF_NAME, ken_name)] += 1
 
-                for _ix in index_dic[i]:
+                for _ix in ix_target:
 
                     PREF_NAME = X.iat[_ix, ix['PREF_NAME']]
                     large_area_name = X.iat[_ix, ix['large_area_name']]

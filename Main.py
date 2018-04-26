@@ -38,15 +38,15 @@ Predict = pred.Predict(config)
 
 def output_model():
     # 予測モデルを作成し、予測結果を出力する
-    Predict.output_model(param_search=False, sample=-1, skip_cv=True, output_model=True)
+    Predict.output_model(param_search=False, sample=100, skip_cv=True, output_model=True)
 
 
 def predict_output():
 
     # TODO: ビューティーが含まれない件
-    model_file_path = './model/2018-04-26/2018-04-26-09-14-24_no_calib'
-    Predict.predict(model_file_path=model_file_path, sample=-1, output_submit_file=True,
-                    separation=1000)
+    model_file_path = './model/2018-04-12/2018-04-11-23-41-45'
+    Predict.predict(model_file_path=model_file_path, sample=100, output_submit_file=True,
+                    separation=100)
 
 
 def predict_evaluate_output():
