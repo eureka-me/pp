@@ -1,7 +1,7 @@
 #! env python
 # -*- coding: utf-8 -*-
 
-import os, random, csv, pickle
+import os, random, csv, pickle, copy
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
@@ -51,12 +51,9 @@ class Predict:
 
         y_pred, uids, cids = [], [], []
         for i, files in enumerate(files_list, start=1):
-            # if i == 3:
-            #     break
-
             X_train, X_test, y_train, y_test, uids_train, uids_test, cids_train, cids_test = \
                 self.get_data(merge_file_dir=merge_file_dir, sample=sample, train_ratio=1,
-                              particular_files=files)
+                              particular_files=files, test=True)
 
             _y_pred = model.predict_proba(X_train)
             y_pred.extend(_y_pred), uids.extend(uids_train), cids.extend(cids_train)
@@ -202,21 +199,55 @@ class Predict:
 
         return today_dir + self.trial_time
 
-    def get_data(self, merge_file_dir, sample=-1, train_ratio=0.8, seed=0, particular_files=None):
+    def get_data(self, merge_file_dir, sample=-1, train_ratio=0.8, seed=0, particular_files=None, test=False):
         """前処理後データディレクトリからデータの読み込み、指定した人数のデータを読み込む
             指定した比率で学習データ、テストデータに分割する"""
 
         self.logger.debug('reading data...')
+        X, y, uids, cids = self.read_data(merge_file_dir=merge_file_dir, particular_files=particular_files,
+                                          sample=sample, seed=seed)
+
+        # 欠損値処理
+        self.logger.debug('START: fillna')
+        X = X.fillna({'VALIDPERIOD': 365, 'USABLE_DATE_MON': '1', 'USABLE_DATE_TUE': '1', 'USABLE_DATE_WED': '1',
+                      'USABLE_DATE_THU': '1', 'USABLE_DATE_FRI': '1', 'USABLE_DATE_SAT': '1', 'USABLE_DATE_SUN': '1',
+                      'USABLE_DATE_HOLIDAY': '1', 'USABLE_DATE_BEFORE_HOLIDAY': '1'})
+
+        if self.config['PREDICT']['ADD_SAME_GENRE'] != '':
+            self.logger.debug('START: add_same_genre_purchase_visit')
+            X = self.add_same_genre_purchase_visit(X)
+
+        if self.config['PREDICT']['ADD_PLACE_INTERACTION'] == 'TRUE':
+            self.logger.debug('START: add_place_interaction')
+            X = self.add_place_interaction(X)
+
+        if self.config['PREDICT']['ADD_PLACE_INTERACTION_RATIO'] == 'TRUE':
+            self.logger.debug('START: add_place_interaction_ratio')
+            X = self.add_place_interaction_ratio(X, y, test=test)
+
+        if train_ratio < 1:
+            X_train, X_test, y_train, y_test, uids_train, uids_test, cids_train, cids_test \
+                = train_test_split(X, y, uids, cids, train_size=train_ratio, random_state=seed)
+        else:
+            X_train, X_test, y_train, y_test, uids_train, uids_test, cids_train, cids_test \
+                = X, None, y, None, uids, None, cids, None
+
+        return X_train, X_test, y_train, y_test, uids_train, uids_test, cids_train, cids_test
+
+    def read_data(self, merge_file_dir, particular_files=None, sample=-1, seed=0, initial_var=None):
+
         if particular_files is not None:
             files = particular_files
         else:
             files = os.listdir(merge_file_dir)
-            if sample > 0:
-                random.seed(seed)
-                files = random.sample(files, sample)
+
+        if 0 < sample < len(files):
+            random.seed(seed)
+            files = random.sample(files, sample)
 
         row_list, y, colname, uids, cids = [], [], None, [], []
-        initial_var = self.config['PREDICT']['INITIAL_VAR'].replace(' ', '').split(',')
+        if initial_var is None:
+            initial_var = self.config['PREDICT']['INITIAL_VAR'].replace(' ', '').split(',')
         continuous_var = self.config['PREDICT']['CONTINUOUS_VAR'].replace(' ', '').split(',')
 
         for i, _file in tqdm(enumerate(files)):
@@ -229,7 +260,7 @@ class Predict:
 
                     for row in reader:
                         _row = []
-                        if '' in row[ix['purchase_all_1']:ix['visit_健康・医療_26']+1]:
+                        if '' in row[ix['purchase_all_1']:ix['visit_健康・医療_26'] + 1]:
                             # もし、purchaseかvisitが''なら、そのレコードをとばす
                             continue
 
@@ -249,32 +280,7 @@ class Predict:
 
         X = pd.DataFrame(row_list, columns=initial_var)
 
-        # 欠損値処理
-        self.logger.debug('START: fillna')
-        X = X.fillna({'VALIDPERIOD': 365, 'USABLE_DATE_MON': '1', 'USABLE_DATE_TUE': '1', 'USABLE_DATE_WED': '1',
-                      'USABLE_DATE_THU': '1', 'USABLE_DATE_FRI': '1', 'USABLE_DATE_SAT': '1', 'USABLE_DATE_SUN': '1',
-                      'USABLE_DATE_HOLIDAY': '1', 'USABLE_DATE_BEFORE_HOLIDAY': '1'})
-
-        if self.config['PREDICT']['ADD_SAME_GENRE'] != '':
-            self.logger.debug('START: add_same_genre_purchase_visit')
-            X = self.add_same_genre_purchase_visit(X)
-
-        if self.config['PREDICT']['ADD_PLACE_INTERACTION'] == 'TRUE':
-            self.logger.debug('START: add_place_interaction')
-            X = self.add_place_interaction(X)
-
-        if self.config['PREDICT']['ADD_PLACE_INTERACTION_RATIO'] == 'TRUE':
-            self.logger.debug('START: add_place_interaction_ratio')
-            X = self.add_place_interaction_ratio(X, y)
-
-        if train_ratio < 1:
-            X_train, X_test, y_train, y_test, uids_train, uids_test, cids_train, cids_test \
-                = train_test_split(X, y, uids, cids, train_size=train_ratio, random_state=seed)
-        else:
-            X_train, X_test, y_train, y_test, uids_train, uids_test, cids_train, cids_test \
-                = X, None, y, None, uids, None, cids, None
-
-        return X_train, X_test, y_train, y_test, uids_train, uids_test, cids_train, cids_test
+        return X, y, uids, cids
 
     @staticmethod
     def format_submit_file(y_pred, uid, cid, upper=10, pred_thr=0.25):
@@ -442,21 +448,28 @@ class Predict:
 
         return X
 
-    @staticmethod
-    def add_place_interaction_ratio(X, y, k=5, denominator="each_section"):
+    def add_place_interaction_ratio(self, X, y, k=5, denominator="each_section", test=False):
         """
         ジャンルごとのユーザー×クーポンの購入比率を算出し、カラムを追加する
         そのジャンルにおけるユーザー地域×クーポン地域での購入数/そのジャンルのレコード数
         """
 
-        X.loc[:, 'y'] = y
         X.loc[:, 'PREF_NAME_large_area_name_ratio'] = [.0 for _ in range(len(X))]
         X.loc[:, 'PREF_NAME_small_area_name_ratio'] = [.0 for _ in range(len(X))]
         X.loc[:, 'PREF_NAME_ken_name_ratio'] = [.0 for _ in range(len(X))]
         ix = {c: i for i, c in enumerate(X.keys())}
 
+        if test:
+            X_ref, y, uids, cids = self.read_data(self.config['GENERAL']['MERGE_FILE_DIR_TRAIN'], sample=10,
+                              initial_var=['GENRE_NAME', 'PREF_NAME', 'large_area_name', 'small_area_name', 'ken_name'])
+        else:
+            X_ref = copy.deepcopy(X)
+
+        X_ref.loc[:, 'y'] = y
+        ix_ref = {c: i for i, c in enumerate(X_ref.keys())}
+
         # 1. ジャンルで分割
-        gp = X.groupby(['GENRE_NAME'])
+        gp = X_ref.groupby(['GENRE_NAME'])
 
         # 2. ジャンルでの分割ごとに実行
         for gp_name, _X in gp:
@@ -485,16 +498,16 @@ class Predict:
 
                 for _ix, row in zip(_X_reference.index, _X_reference.values):
 
-                    PREF_NAME = row[ix['PREF_NAME']]
-                    large_area_name = row[ix['large_area_name']]
-                    small_area_name = row[ix['small_area_name']]
-                    ken_name = row[ix['ken_name']]
+                    PREF_NAME = row[ix_ref['PREF_NAME']]
+                    large_area_name = row[ix_ref['large_area_name']]
+                    small_area_name = row[ix_ref['small_area_name']]
+                    ken_name = row[ix_ref['ken_name']]
 
                     PREF_NAME_large_area_name_dic_din[(PREF_NAME, large_area_name)] += 1
                     PREF_NAME_small_area_name_dic_din[(PREF_NAME, small_area_name)] += 1
                     PREF_NAME_ken_name_dic_din[(PREF_NAME, ken_name)] += 1
 
-                    if row[ix['y']] == 1:
+                    if row[ix_ref['y']] == 1:
 
                         PREF_NAME_large_area_name_dic[(PREF_NAME, large_area_name)] += 1
                         PREF_NAME_small_area_name_dic[(PREF_NAME, small_area_name)] += 1
@@ -533,7 +546,7 @@ class Predict:
                               PREF_NAME_ken_name_dic_din[(PREF_NAME, ken_name)] \
                               if PREF_NAME_ken_name_dic_din[(PREF_NAME, ken_name)] > 0 else 0
 
-        X = X.drop('y', axis=1)
+        # X = X.drop('y', axis=1)
 
         return X
 
